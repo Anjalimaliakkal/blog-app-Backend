@@ -14,9 +14,6 @@ const generateHashedPassword = async(password) => {
 const salt = await bcrypt.genSalt(10)
 return bcrypt.hash(password,salt)
 }
-
-
-
 app.post("/signUp", async(req, res) => {
 
     let input = req.body
@@ -56,6 +53,11 @@ if (isMatch) {
     ).catch()
 })
 
-app.listen(8081, () => {
-    console.log("server started")
+app.post("/viewusers",(req,res)=>{
+    blogsmodel.find().then(
+        (response)=>{
+            res.json
+        }
+    )
 })
+
